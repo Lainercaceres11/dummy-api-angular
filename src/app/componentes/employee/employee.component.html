@@ -1,0 +1,29 @@
+<h1 class="text-center">Employees</h1>
+<div class="container pt-5">
+<div class="spiner">
+  <div class="spinner-border " style="width: 3rem; height: 3rem;" role="status" *ngIf="loading">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status"  *ngIf="loading">
+    <span class="visually-hidden">Loading...</span>
+  </div> 
+</div> 
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div *ngFor="let datosEmpleados of listData; index as i" class="col">
+          <div class="card">
+            <div class="card-body">
+                <img src="/assets/img/photo.jfif" alt="Imagen de persona" class="img-fluid" *ngIf="datosEmpleados.employee_age>30; else imagen2 ">
+                <ng-template #imagen2> <img src="/assets/img/photo2.jfif" alt="" class="img-fluid"></ng-template>
+                <p class="subtitle">Full name</p> 
+                <p class="data-text">{{ datosEmpleados.employee_name}}</p> 
+                <p class="subtitle">Salary</p>
+                <p class="data-text">{{ datosEmpleados.employee_salary }}</p>
+                <p class="subtitle">Age</p>
+                <p class="data-text">{{ datosEmpleados.employee_age }}</p>
+                <a class="btn btn-info" [routerLink]="['/employes', i]">Ver detalles</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
